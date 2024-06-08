@@ -1,0 +1,23 @@
+{
+  "name": "vite-hono-fullstack",
+  "module": "index.ts",
+  "type": "module",
+  "workspaces": [
+    "frontend",
+    "backend"
+  ],
+  "scripts": {
+    "dev:fe": "cd frontend && bun dev",
+    "dev:be": "cd backend && bun dev",
+    "dev": "concurrently --names 'vite,hono' -c 'bgCyan.bold,bgMagenta.bold' 'bun dev:fe' 'bun dev:be'",
+    "build": "cd frontend && bun run build && cd ../backend && bun run build",
+    "start": "cd _build && node index.js"
+  },
+  "devDependencies": {
+    "@types/bun": "latest",
+    "concurrently": "^8.2.2"
+  },
+  "peerDependencies": {
+    "typescript": "^5.2.2"
+  }
+}
